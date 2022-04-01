@@ -3,7 +3,7 @@ const path = require('path')
 
 function walkFile(dir = __dirname, list = []) {
     let arr = fs.readdirSync(dir);
-    arr.forEach(function (item) {
+    arr.forEach(function(item) {
         let fullpath = path.resolve(dir, item);
         let stats = fs.statSync(fullpath);
         if (stats.isDirectory()) {
@@ -14,7 +14,7 @@ function walkFile(dir = __dirname, list = []) {
     });
     return list;
 }
-const desName = "/Users/zhangyifei/Desktop/yunpan/geek/Flutter核心技术与实战";
+const desName = "/Users/zhangyifei/Desktop/yunpan/geek/OAuth 2.0实战课";
 var res = walkFile(desName);
 
 var pdfPath = path.resolve(desName, "pdf");
@@ -24,7 +24,7 @@ if (!fs.existsSync(pdfPath)) {
 
 res.forEach(ele => {
     console.log(path.extname(path.basename(ele)))
-    if(path.extname(ele) != '.pdf') return
+    if (path.extname(ele) != '.pdf') return
     var readStream = fs.createReadStream(ele);
     var writeStream = fs.createWriteStream(path.resolve(pdfPath, path.basename(ele)));
     // 复制操作
@@ -41,5 +41,3 @@ res.forEach(ele => {
 
 
 // console.log(res)
-
-
